@@ -1,0 +1,71 @@
+<div class="mat-app-background">
+  <div class="d-flex justify-content-between align-items-center pd-2">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput placeholder="Search..." [formControl]="filterControl" />
+    </mat-form-field>
+    <button mat-stroked-button (click)="openAddBookModal()">Add data</button>
+  </div>
+
+  <table
+    mat-table
+    [dataSource]="booksDataSource"
+    class="mat-elevation-z8"
+    matSort
+  >
+    <ng-container matColumnDef="preview">
+      <th mat-header-cell *matHeaderCellDef>Preview</th>
+      <td mat-cell *matCellDef="let book">
+        <ng-container *ngIf="book.imagePreview; else showIcon">
+          <img
+            [src]="book.imagePreview"
+            alt="Image Book Preview"
+            width="100"
+            height="100"
+          />
+        </ng-container>
+
+        <ng-template #showIcon>
+          <mat-icon>photo</mat-icon>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let book">{{ book.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="author">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Author</th>
+      <td mat-cell *matCellDef="let book">{{ book.author }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="year">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Year</th>
+      <td mat-cell *matCellDef="let book">{{ book.year }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let book">
+        <button mat-icon-button (click)="openEditBookModal(book)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      @listAnimation
+    ></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    [pageSize]="10"
+    aria-label="Select page of users"
+  ></mat-paginator>
+</div>

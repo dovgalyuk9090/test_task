@@ -1,27 +1,37 @@
-# TestProject
+# Створення простого додатку для управління списком книг
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+Опис Необхідно створити веб-додаток з використанням Angular для управління
+списком книг. Додаток повинен забезпечувати можливість перегляду списку книг,
+додавання нових книг, редагування та видалення існуючих книг.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Сторінка зі списком книг:
+- Відображення списку книг з інформацією про назву, автора та рік видання.
+- Можливість видалення книги.
+- Можливість додавання нової книги.
+- Можливість редагування інформації про книгу.
 
-## Code scaffolding
+### Popup з деталями книги:
+- При кліку на книгу зі списку відкривається popup з деталями цієї книги.
+- Можливість видалення книги.
+- Можливість редагування інформації про книгу.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Бонусні завдання (необов'язково, але бажано):
+- Додавання зображень обкладинок книг.
+- Додавання зображень обкладинок книг.
+- Анімація подій: додавання, видалення, пошук тощо.
 
-## Build
+## Вимоги:
+- Додаток повинен бути написаний на standalone компонентах.
+- Використання Angular Material і будь-якої його теми.
+- Строга типізація.
+- Strictly Typed Forms Angular для додавання та редагування книг.
+- Використання сервісу для зберігання списку книг.
+- Має бути базове наповнення книг, не менше п’яти.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Getting Started
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>

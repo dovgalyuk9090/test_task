@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Edit book</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="form" class="d-flex flex-direction-column">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Title" formControlName="title" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Author</mat-label>
+      <input matInput placeholder="Author" formControlName="author" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Year</mat-label>
+      <input matInput type="number" placeholder="Year" formControlName="year" />
+    </mat-form-field>
+
+    <input type="file" (change)="onFileSelect($event)" />
+
+    <div *ngIf="imagePreview">
+      <img
+        [src]="imagePreview"
+        alt="Image Book Preview"
+        width="100"
+        height="100"
+      />
+    </div>
+
+    <div mat-dialog-actions>
+      <button *ngIf="isEditBookForm" mat-button color="warn" (click)="delete()">
+        Delete
+      </button>
+      <button mat-button matDialogClose>Cancel</button>
+      <button mat-button (click)="save()" [disabled]="form.invalid">
+        Save
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>
