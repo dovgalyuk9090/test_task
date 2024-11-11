@@ -1,4 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  OnInit,
+} from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {
@@ -30,6 +36,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
   ],
   templateUrl: './add-edit-modal.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddEditModalComponent implements OnInit {
   form: FormGroup<BookFormInterface>;
@@ -41,6 +48,7 @@ export class AddEditModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: BookInterface,
     private fb: NonNullableFormBuilder,
     private readonly bookService: BookService,
+    private cdr: ChangeDetectorRef,
   ) {
     this.form = this.fb.group({
       title: [data.title || '', Validators.required],
@@ -89,6 +97,7 @@ export class AddEditModalComponent implements OnInit {
       reader.onload = () => {
         this.imagePreview = reader.result;
         this.form.patchValue({ imagePreview: reader.result as string });
+        this.cdr.markForCheck();
       };
       reader.readAsDataURL(file);
     }
